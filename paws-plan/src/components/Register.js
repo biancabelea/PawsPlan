@@ -4,6 +4,8 @@ import { auth } from '../firebaseConfig';
 const Register = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [registeredEmail, setRegisteredEmail] = useState('');
+	const [registeredPassword, setRegisteredPassword] = useState('');
 
 	const handleRegister = async (e) => {
 		e.preventDefault();
@@ -11,6 +13,8 @@ const Register = () => {
 		try {
 			await auth.createUserWithEmailAndPassword(email, password);
 			console.log('Registered successfully!');
+			setRegisteredEmail(email);
+			setRegisteredPassword(password);
 			setEmail('');
 			setPassword('');
 		} catch (error) {
@@ -36,6 +40,9 @@ const Register = () => {
 				/>
 				<button type="submit">Register</button>
 			</form>
+			{registeredEmail && (
+				<p>Registered as: {registeredEmail}</p>
+			)}
 		</div>
 	);
 };

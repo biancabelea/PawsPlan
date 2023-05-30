@@ -4,6 +4,8 @@ import { auth } from '../firebaseConfig';
 const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [loggedEmail, setLoggedEmail] = useState('');
+	const [loggedPassword, setLoggedPassword] = useState('');
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
@@ -11,6 +13,8 @@ const Login = () => {
 		try {
 			await auth.signInWithEmailAndPassword(email, password);
 			console.log('Logged in successfully!');
+			setLoggedEmail(email);
+			setLoggedPassword(password);
 			setEmail('');
 			setPassword('');
 		} catch (error) {
@@ -36,6 +40,9 @@ const Login = () => {
 				/>
 				<button type="submit">Log In</button>
 			</form>
+			{loggedEmail && (
+				<p>Logged in as: {loggedEmail}</p>
+			)}
 		</div>
 	);
 };
