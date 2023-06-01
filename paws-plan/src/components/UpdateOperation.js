@@ -20,10 +20,11 @@ const UpdateOperation = () => {
 		fetchTodos();
 	}, []);
 
-	const handleUpdate = async () => {
+	const handleUpdate = async (e) => {
+		e.preventDefault();
 		if (subject !== '') {
 			const todoRef = doc(firestore, 'todos', selectedTodoId);
-			await updateDoc(todoRef, { subject });
+			await updateDoc(todoRef, { subject: subject });
 			setSubject('');
 		}
 	};
