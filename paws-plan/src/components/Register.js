@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { auth } from '../firebaseConfig';
+import firebase from "firebase/compat/app";
 
 const Register = () => {
 	const [email, setEmail] = useState('');
@@ -11,8 +12,17 @@ const Register = () => {
 		e.preventDefault();
 
 		try {
-			await auth.createUserWithEmailAndPassword(email, password);
-			console.log('Registered successfully!');
+			const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+			const user = userCredential.user;
+
+			const userRef = firebase.firestore().collection('users').doc(user.uid);
+			const userData = {
+				// displayName: user.displayName,
+				email: user.email
+			};
+			await userRef.set(userData);
+			console.log('Registered successfully!', user.email);
+			
 			setRegisteredEmail(email);
 			setRegisteredPassword(password);
 			setEmail('');
