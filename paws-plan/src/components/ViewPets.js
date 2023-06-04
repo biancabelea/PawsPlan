@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { firestore } from "../firebaseConfig";
 import { collection, query, getDocs } from 'firebase/firestore';
 import EditPet from "./EditPet";
+import DeletePet from "./DeletePet";
 
 const ViewPets = (props) => {
 	const [pets, setPets] = useState([]);
@@ -35,7 +36,11 @@ const ViewPets = (props) => {
 
 	const handleCancelEditPet = () => {
 		setSelectedPetId(null);
-	}
+	};
+
+	const handleDeletePet = (petId) => {
+		setPets((prevPets) => prevPets.filter((pet) => pet.petId !== petId));
+	};
 
 	return (
 		<div>
@@ -59,8 +64,15 @@ const ViewPets = (props) => {
 									onCancelEdit={handleCancelEditPet}
 								/>
 							) : (
-								<button onClick={() => handleEditPet(pet.petId)}>
-									Editeaza animalul</button>
+								<>
+									<button onClick={() => handleEditPet(pet.petId)}>
+										Editează animalul</button>
+									<DeletePet
+										userId={props.userId}
+										petId={pet.petId}
+										onDelete={handleDeletePet}
+									/>
+								</>
 							)
 							}
 						</li>

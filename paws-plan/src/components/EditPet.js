@@ -25,7 +25,7 @@ const EditPet = ({userId, petId, petName, age, breed}) => {
 	return (
 		<div>
 			<form onSubmit={handleUpdate}>
-				<h1>Editeaza animal</h1>
+				<h1>Editează animal</h1>
 				<div>
 					<label>Numele animalului: </label>
 					<input
@@ -35,7 +35,7 @@ const EditPet = ({userId, petId, petName, age, breed}) => {
 					/>
 				</div>
 				<div>
-					<label>Varsta animalului: </label>
+					<label>Vârsta animalului: </label>
 					<input
 						type="number"
 						value={editedAge}
@@ -50,7 +50,7 @@ const EditPet = ({userId, petId, petName, age, breed}) => {
 						onChange={(e) => setEditedBreed(e.target.value)}
 					/>
 				</div>
-				<button type="submit">Salveaza</button>
+				<button type="submit">Salvează</button>
 			</form>
 		</div>
 	);
