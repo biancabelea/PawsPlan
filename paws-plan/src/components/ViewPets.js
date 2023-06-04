@@ -1,16 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { firestore } from "../firebaseConfig";
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import { collection, query, getDocs } from 'firebase/firestore';
+import EditPet from "./EditPet";
 
 const ViewPets = (props) => {
 	const [pets, setPets] = useState([]);
+	const [selectedPetId, setSelectedPetId] = useState(null);
 
 	useEffect(() => {
 		const fetchPets = async () => {
 			try {
 				const petsQuery = query(collection(firestore, "users", props.userId, "pets"));
 				const petsSnapshot = await getDocs(petsQuery);
-				const petsData = petsSnapshot.docs.map((doc) => doc.data());
+				const petsData = petsSnapshot.docs.map((doc) => {
+					const data = doc.data();
+					return {
+						petId: doc.id,
+						petName: data.petName,
+						age: data.age,
+						breed: data.breed
+					};
+				});
 				setPets(petsData);
 			} catch (error) {
 				console.error("Eroare la afișarea animalelor.", error);
@@ -18,6 +28,14 @@ const ViewPets = (props) => {
 		}
 		fetchPets();
 	}, [props.userId]);
+
+	const handleEditPet = (petId) => {
+		setSelectedPetId(petId);
+	};
+
+	const handleCancelEditPet = () => {
+		setSelectedPetId(null);
+	}
 
 	return (
 		<div>
@@ -31,6 +49,20 @@ const ViewPets = (props) => {
 							<h3>{pet.petName}</h3>
 							<p>Vârsta: {pet.age}</p>
 							<p>Rasa: {pet.breed}</p>
+							{selectedPetId === pet.petId ? (
+								<EditPet
+									userId={props.userId}
+									petId={pet.petId}
+									petName={pet.petName}
+									age={pet.age}
+									breed={pet.breed}
+									onCancelEdit={handleCancelEditPet}
+								/>
+							) : (
+								<button onClick={() => handleEditPet(pet.petId)}>
+									Editeaza animalul</button>
+							)
+							}
 						</li>
 					))}
 				</ul>
