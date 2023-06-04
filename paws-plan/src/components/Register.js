@@ -22,7 +22,7 @@ const Register = () => {
 			};
 			await userRef.set(userData);
 			console.log('Registered successfully!', user.email);
-			
+
 			setRegisteredEmail(email);
 			setRegisteredPassword(password);
 			setEmail('');
