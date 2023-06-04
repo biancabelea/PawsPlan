@@ -30,7 +30,7 @@ const AddPet = (props) => {
 
 	return (
 		<div>
-			<h1>Add a pet</h1>
+			<h1>Adaugă un animal</h1>
 			<form onSubmit={addPet}>
 				<div className="input-container">
 					<p>Care e numele animalului?</p>
@@ -59,6 +59,6 @@ const AddPet = (props) => {
 			</form>
 		</div>
 	)
-}
+};
 
 export default AddPet;

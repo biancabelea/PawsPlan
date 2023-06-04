@@ -6,6 +6,7 @@ import ReadOperation from "./components/ReadOperation";
 import UpdateOperation from "./components/UpdateOperation";
 import DeleteOperation from "./components/DeleteOperation";
 import AddPet from "./components/AddPet";
+import ViewPets from "./components/ViewPets";
 
 const App = () => {
     const userId = 'sBoHD7prgza6vYK6ELtgwcGRnh02';
@@ -20,6 +21,7 @@ const App = () => {
             {/*<UpdateOperation/>*/}
             {/*<DeleteOperation/>*/}
             <AddPet userId={userId}/>
+            <ViewPets userId={userId}/>
         </div>
     );
 };
