@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { firestore } from "../firebaseConfig";
-import { collection, addDoc, doc, setDoc } from 'firebase/firestore';
+import { collection, addDoc, doc } from 'firebase/firestore';
 
 const AddPet = (props) => {
 	const [petName, setPetName] = useState('');
