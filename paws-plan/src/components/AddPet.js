@@ -11,20 +11,17 @@ const AddPet = (props) => {
 		e.preventDefault();
 		if (petName !== "") {
 			try {
-				const userRef = doc(firestore, "users", props.userId);
-				const petDocRef = await addDoc(collection(userRef, "pets"), {
+				const userDocRef = doc(firestore, "users", props.userId);
+				const petsCollectionRef = collection(userDocRef, "pets");
+				const petDocRef = await addDoc(petsCollectionRef, {
 					petName: petName,
 					age: petAge,
 					breed: breed,
 				});
 
-				await setDoc(userRef, {pets: firestore.FieldValue.arrayUnion(petDocRef.id)}, {merge: true});
-
-				console.log("animal adaugat", petName);
 				setPetName("");
 				setPetAge(0);
 				setBreed("");
-				console.log("animal adaugat", petName);
 			} catch (error) {
 				console.error('Eroare la adaugarea animalului: ', error);
 			}
