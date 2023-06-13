@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { firestore } from "../firebaseConfig";
 import { collection, addDoc, doc } from 'firebase/firestore';
+import Logout from "./authentication/Logout";
 
 const AddPet = (props) => {
 	const [petName, setPetName] = useState('');
@@ -22,6 +23,7 @@ const AddPet = (props) => {
 				setPetName("");
 				setPetAge(0);
 				setBreed("");
+				console.log('Animalul a fost adăugat cu succes!');
 			} catch (error) {
 				console.error('Eroare la adaugarea animalului: ', error);
 			}
@@ -57,6 +59,7 @@ const AddPet = (props) => {
 					<button>Adaugă animal</button>
 				</div>
 			</form>
+			<Logout userId={props.userId}/>
 		</div>
 	)
 };

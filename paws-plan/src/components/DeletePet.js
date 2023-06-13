@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { firestore } from "../firebaseConfig";
 import { doc, deleteDoc} from 'firebase/firestore';
+import Logout from "./authentication/Logout";
 
 const DeletePet = ({userId, petId, onDelete}) => {
 	const [confirmDelete, setConfirmDelete] = useState(false);
@@ -31,6 +32,7 @@ const DeletePet = ({userId, petId, onDelete}) => {
 			) : (
 				<button onClick={deleteConfirmation}>Șterge animalul</button>
 			)}
+			<Logout userId={userId}/>
 		</div>
 	);
 };

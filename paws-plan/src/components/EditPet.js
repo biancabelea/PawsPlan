@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { firestore } from "../firebaseConfig";
 import { doc, updateDoc } from 'firebase/firestore';
+import Logout from "./authentication/Logout";
 
 const EditPet = ({userId, petId, petName, age, breed}) => {
 	const [editedPetName, setEditedPetName] = useState(petName);
@@ -52,6 +53,7 @@ const EditPet = ({userId, petId, petName, age, breed}) => {
 				</div>
 				<button type="submit">Salvează</button>
 			</form>
+			<Logout userId={userId}/>
 		</div>
 	);
 };

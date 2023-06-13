@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { auth } from "./firebaseConfig";
 import AddPet from "./components/AddPet";
 import ViewPets from "./components/ViewPets";
-import Register from "./components/Register";
-import Login from "./components/Login";
+import Register from "./components/authentication/Register";
+import Login from "./components/authentication/Login";
+import Logout from "./components/authentication/Logout";
 
 const App = () => {
     const [userId, setUserId] = useState(null);

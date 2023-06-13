@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { auth } from '../firebaseConfig';
+import { auth } from '../../firebaseConfig';
 import firebase from "firebase/compat/app";
 
 const Register = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [registeredEmail, setRegisteredEmail] = useState('');
-	const [registeredPassword, setRegisteredPassword] = useState('');
 
 	const handleRegister = async (e) => {
 		e.preventDefault();
@@ -24,7 +23,6 @@ const Register = () => {
 			console.log('Registered successfully!', user.email);
 
 			setRegisteredEmail(email);
-			setRegisteredPassword(password);
 			setEmail('');
 			setPassword('');
 		} catch (error) {

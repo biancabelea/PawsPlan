@@ -3,6 +3,7 @@ import { firestore } from "../firebaseConfig";
 import { collection, query, getDocs } from 'firebase/firestore';
 import EditPet from "./EditPet";
 import DeletePet from "./DeletePet";
+import Logout from "./authentication/Logout";
 
 const ViewPets = (props) => {
 	const [pets, setPets] = useState([]);
@@ -79,6 +80,7 @@ const ViewPets = (props) => {
 					))}
 				</ul>
 			)}
+			<Logout userId={props.userId}/>
 		</div>
 	);
 };

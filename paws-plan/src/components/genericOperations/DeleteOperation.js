@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { firestore } from '../firebaseConfig';
+import { firestore } from '../../firebaseConfig';
 import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore';
 
 const DeleteOperation = () => {

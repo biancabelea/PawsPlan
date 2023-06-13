@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { firestore } from "../firebaseConfig";
+import { firestore } from "../../firebaseConfig";
 import { collection, addDoc } from 'firebase/firestore';
 
 const CreateOperation = (props) => {

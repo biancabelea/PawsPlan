@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { auth } from '../firebaseConfig';
+import { auth } from '../../firebaseConfig';
+import Logout from "./Logout";
 
 const Login = () => {
 	const [email, setEmail] = useState('');
@@ -24,26 +25,16 @@ const Login = () => {
 		}
 	};
 
-	const handleLogout = async () => {
-		try {
-			await auth.signOut();
-			console.log('Log out cu succes!');
-			setLoggedIn(false);
-		} catch (error) {
-			console.error('Eroare la log out:', error);
-		}
-	};
-
 	return (
 		<div>
 			{loggedIn ? (
 				<div>
 					<h2>Bine ai venit, {loggedEmail}!</h2>
-					<button onClick={handleLogout}>Log Out</button>
+					<Logout/>
 				</div>
 			) : (
 				<div>
-					<h2>Login</h2>
+					<h2>Log In</h2>
 					<form onSubmit={handleLogin}>
 						<input
 							type="email"
