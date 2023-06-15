@@ -17,46 +17,47 @@ body {
     flex-direction: column;
     align-items: center;
 }
-.login-container {
+
+.register-container {
     background-color: white;
     height: 600px;
     width: 500px;
     position: relative;
 }
 
-.login-container .doctor-photo {
+.register-container .medic-photo {
     position: absolute;
-    top: 41%;
-    left: -85%;
-    height: 360px;
+    top: 47%;
+    left: -82%;
+    height: 320px;
     z-index: 1;
 }
-.login-container .dog-photo {
+.register-container .cat-photo {
     position: absolute;
-    top: 77%;
-    left: 3%;
-    height: 160px;
+    top: 79%;
+    left: 5%;
+    height: 130px;
     z-index: 1;
 }
-.login-content {
+.register-content {
     height: 600px;
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
     align-items: center;
 }
-.login-content h2 {
+.register-content h2 {
     margin: 30px;
     font-size: 35px;
     color: var(--baby-blue-darker);
 }
-.login-form {
+.register-form {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
-.login-input {
+.register-input {
     width: 250px;
     height: 30px;
     border: none;
@@ -66,7 +67,7 @@ body {
     position: relative;
     z-index: 2;
 }
-.login-button {
+.register-button {
     width: 200px;
     height: 40px;
     margin-top: 40px;
@@ -77,11 +78,11 @@ body {
     z-index: 2;
 }
 
-.login-button:hover {
+.register-button:hover {
     background-color: var(--baby-blue-darker);
 }
 
-.login-label {
+.register-label {
     color: gray;
     border-bottom: 1px solid gray;
     margin: 15px 0;

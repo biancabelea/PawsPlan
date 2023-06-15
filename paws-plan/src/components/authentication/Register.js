@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
 import { auth } from '../../firebaseConfig';
 import firebase from "firebase/compat/app";
+import '../../styles/Register.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import {ReactComponent as MedicPic} from "../../pictures/undraw_medical.svg";
+import {ReactComponent as CatPic} from "../../pictures/undraw_cat.svg";
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [registeredEmail, setRegisteredEmail] = useState('');
+
+	const navigate = useNavigate();
 
 	const handleRegister = async (e) => {
 		e.preventDefault();
@@ -16,7 +27,7 @@ const Register = () => {
 
 			const userRef = firebase.firestore().collection('users').doc(user.uid);
 			const userData = {
-				// displayName: user.displayName,
+				displayName: name,
 				email: user.email
 			};
 			await userRef.set(userData);
@@ -25,29 +36,52 @@ const Register = () => {
 			setRegisteredEmail(email);
 			setEmail('');
 			setPassword('');
+			navigate('/login');
 		} catch (error) {
 			console.error('Error registering:', error);
 		}
 	};
 
 	return (
-		<div>
-			<h2>Register</h2>
-			<form onSubmit={handleRegister}>
-				<input
-					type="email"
-					placeholder="Email"
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
-				/>
-				<input
-					type="password"
-					placeholder="Password"
-					value={password}
-					onChange={(e) => setPassword(e.target.value)}
-				/>
-				<button type="submit">Register</button>
-			</form>
+		<div className='register-container'>
+			<MedicPic className="medic-photo"/>
+			<CatPic className="cat-photo"/>
+			<div className='register-content'>
+				<div><h2>Înregistrare</h2></div>
+				<form onSubmit={handleRegister} className='register-form'>
+					<div className="register-label">
+						<FontAwesomeIcon icon={faUser}/>
+						<input
+							className="register-input"
+							type="text"
+							placeholder="Nume"
+							value={name}
+							onChange={(e) => setName(e.target.value)}
+						/>
+					</div>
+					<div className="register-label">
+						<FontAwesomeIcon icon={faEnvelope}/>
+						<input
+							className="register-input"
+							type="email"
+							placeholder="Email"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+						/>
+					</div>
+					<div className="register-label">
+						<FontAwesomeIcon icon={faLock}/>
+						<input
+							className="register-input"
+							type="password"
+							placeholder="Parola"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+					</div>
+					<button className="register-button" type="submit" onClick={handleRegister}>Înregistrare</button>
+				</form>
+			</div>
 			{registeredEmail && (
 				<p>Registered as: {registeredEmail}</p>
 			)}

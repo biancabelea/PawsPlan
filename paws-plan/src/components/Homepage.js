@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import Register from "./authentication/Register";
 import Login from "./authentication/Login";
 import { useNavigate } from 'react-router-dom';
 
-const Homepage = () =>
-{
+const Homepage = ({loggedUserName}) => {
+	const [userId, setUserId] = useState(null);
+
 	const navigate = useNavigate();
 
 	const handleLoginClick = () => {
