@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { auth } from '../../firebaseConfig';
 import Logout from "./Logout";
+import '../../styles/Login.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
+import {ReactComponent as DoctorPic} from "../../pictures/undraw_doctors.svg"
+import {ReactComponent as DogPic} from "../../pictures/undraw_dog.svg";
+
 
 const Login = () => {
 	const [email, setEmail] = useState('');
@@ -26,29 +33,39 @@ const Login = () => {
 	};
 
 	return (
-		<div>
+		<div className="login-container">
+			<DoctorPic className="doctor-photo"/>
+			<DogPic className="dog-photo"/>
 			{loggedIn ? (
 				<div>
 					<h2>Bine ai venit, {loggedEmail}!</h2>
 					<Logout/>
 				</div>
 			) : (
-				<div>
-					<h2>Log In</h2>
-					<form onSubmit={handleLogin}>
-						<input
-							type="email"
-							placeholder="Email"
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
-						/>
-						<input
-							type="password"
-							placeholder="Password"
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-						/>
-						<button type="submit">Log In</button>
+				<div className="login-content">
+					<div><h2>Conectare</h2></div>
+					<form onSubmit={handleLogin} className="login-form">
+						<div className="login-label">
+							<FontAwesomeIcon icon={faUser}/>
+							<input
+								className="login-input"
+								type="email"
+								placeholder="Email"
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
+							/>
+						</div>
+						<div className="login-label">
+							<FontAwesomeIcon icon={faLock}/>
+							<input
+								className="login-input"
+								type="password"
+								placeholder="Parola"
+								value={password}
+								onChange={(e) => setPassword(e.target.value)}
+							/>
+						</div>
+						<button className="login-button" type="submit">CONECTARE</button>
 					</form>
 				</div>
 			)}

@@ -1,0 +1,84 @@
+:root {
+    --white: #ffffff;
+    --baby-blue: #81a1c8;
+    --baby-blue-darker: #456fa2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto;
+}
+body {
+    height: 100vh;
+    background-color: var(--baby-blue);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.login-container {
+    background-color: white;
+    height: 600px;
+    width: 500px;
+}
+
+.login-container .doctor-photo {
+    position: absolute;
+    top: 44%;
+    left: 15%;
+    height: 360px;
+}
+.login-container .dog-photo {
+    position: absolute;
+    top: 67%;
+    left: 38%;
+    height: 160px;
+}
+.login-content {
+    height: 600px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+}
+.login-content h2 {
+    margin: 30px;
+    font-size: 35px;
+    color: var(--baby-blue-darker);
+}
+.login-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.login-input {
+    width: 250px;
+    height: 30px;
+    border: none;
+    margin-left: 20px;
+    outline: none;
+    font-size: 20px;
+}
+.login-button {
+    width: 200px;
+    height: 40px;
+    margin-top: 40px;
+    border: none;
+    background-color: var(--baby-blue);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: var(--baby-blue-darker);
+}
+
+.login-label {
+    color: gray;
+    border-bottom: 1px solid gray;
+    margin: 15px 0;
+    font-size: 20px;
+}
+
