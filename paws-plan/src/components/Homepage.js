@@ -1,10 +1,13 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import Register from "./authentication/Register";
 import Login from "./authentication/Login";
 import { useNavigate } from 'react-router-dom';
+import {UserContext} from "./UserContext";
+import Logout from "./authentication/Logout";
 
 const Homepage = ({loggedUserName}) => {
-	const [userId, setUserId] = useState(null);
+	const { userId } = useContext(UserContext);
+	const { ownerName } = useContext(UserContext);
 
 	const navigate = useNavigate();
 
@@ -18,9 +21,17 @@ const Homepage = ({loggedUserName}) => {
 
 	return (
 		<div>
-			<h1>welcome</h1>
-			<button onClick={handleLoginClick}>Go to Login</button>
-			<button onClick={handleRegisterClick}>Go to Register</button>
+			{userId ? (
+				<div>
+					<h1>welcome {ownerName}</h1>
+					<Logout userId={userId}/>
+				</div>
+			) : (
+			<div>
+				<button onClick={handleLoginClick}>Go to Login</button>
+				<button onClick={handleRegisterClick}>Go to Register</button>
+			</div>
+			)}
 		</div>
 	)
 }

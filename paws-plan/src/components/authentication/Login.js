@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { auth } from '../../firebaseConfig';
+import React, {useContext, useState} from 'react';
+import { auth, firestore } from '../../firebaseConfig';
 import Logout from "./Logout";
 import '../../styles/Login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,9 +8,12 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import {ReactComponent as DoctorPic} from "../../pictures/undraw_doctors.svg"
 import {ReactComponent as DogPic} from "../../pictures/undraw_dog.svg";
 import { useNavigate } from 'react-router-dom';
+import {UserContext} from "../UserContext";
 
 
 const Login = () => {
+	const { setUserId, setOwnerName } = useContext(UserContext);
+
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [loggedEmail, setLoggedEmail] = useState('');
@@ -22,13 +25,26 @@ const Login = () => {
 		e.preventDefault();
 
 		try {
-			await auth.signInWithEmailAndPassword(email, password);
-			console.log('Log in cu succes!');
-			setLoggedEmail(email);
-			setEmail('');
-			setPassword('');
-			setLoggedIn(true);
-			navigate('/');
+			const {user} = await auth.signInWithEmailAndPassword(email, password);
+			const userRef = firestore.collection('users').doc(user.uid);
+			const userDoc = await userRef.get();
+
+			if (userDoc.exists) {
+				const userData = userDoc.data();
+				const ownerName = userData.ownerName;
+
+				console.log('Log in cu succes!');
+				setOwnerName(ownerName);
+				setLoggedEmail(email);
+				setEmail('');
+				setPassword('');
+				setLoggedIn(true);
+				const userId = user.uid;
+				setUserId(userId);
+
+				navigate('/');
+			}
+
 		} catch (error) {
 			console.error('Eroare la log in:', error);
 		}

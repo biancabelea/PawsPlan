@@ -27,7 +27,7 @@ const Register = () => {
 
 			const userRef = firebase.firestore().collection('users').doc(user.uid);
 			const userData = {
-				displayName: name,
+				ownerName: name,
 				email: user.email
 			};
 			await userRef.set(userData);
