@@ -24,14 +24,12 @@ const Homepage = ({loggedUserName}) => {
 		<div>
 			{userId ? (
 				<div>
-					{/*<h1>welcome {ownerName}</h1>*/}
 					<Menu/>
 				</div>
 			) : (
 			<div>
-				{/*<button onClick={handleLoginClick}>Go to Login</button>*/}
-				{/*<button onClick={handleRegisterClick}>Go to Register</button>*/}
-				<Menu/>
+				<button onClick={handleLoginClick}>Go to Login</button>
+				<button onClick={handleRegisterClick}>Go to Register</button>
 			</div>
 			)}
 		</div>

@@ -8,6 +8,8 @@ import {UserContext} from "./UserContext";
 import "../styles/ViewPet.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaw } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import AddPet from "./AddPet";
 
 
@@ -54,7 +56,6 @@ const ViewPets = () => {
 
 	return (
 		<div>
-			{/*<h1>Animalele tale</h1>*/}
 			{pets.length === 0 ? (
 				<p>Nu ai adăugat animale.</p>
 			) : (
@@ -67,27 +68,33 @@ const ViewPets = () => {
 								</button>
 							))}
 					</div>
-					<div className="helper">
-						<div className="meds">
-							<h2>Medicația lui jygvyutfvuybi</h2>
-							<div className="med-pets">
-								{pets.map((pet) => (
-									<button key={pet.petId} className="med-card">
-										<h3>{pet.petName}</h3>
-										<p>Vârsta: {pet.age}</p>
-										<p>Rasa: {pet.breed}</p>
-									</button>
+					<div className="meds">
+						<h2>Medicația lui jygvyutfvuybi</h2>
+						<div className="med-pets">
+							{pets.map((pet) => (
+								<button key={pet.petId} className="med-card">
+									<h3>{pet.petName}</h3>
+									<p>Vârsta: {pet.age}</p>
+									<p>Rasa: {pet.breed}</p>
+								</button>
 
-								))}
-							</div>
+							))}
 						</div>
 					</div>
 					<div className="info-pet">
-						{pets.map((pet) => (
-							<li key={pet.petId}>
-								<h3>{pet.petName}</h3>
-							</li>
-						))}
+						<div className="info">
+							<h2>Nume animal selectat</h2>
+							<div className="info-card">
+								<p><FontAwesomeIcon className="icon" icon={faCalendarDays}/>Vârsta: 3 ani</p>
+								<p><FontAwesomeIcon className="icon" icon={faHeart}/>Rasa: Bichon</p>
+							</div>
+
+							<div className="animal-buttons">
+								<button>Edit</button>
+								<button>Delete</button>
+							</div>
+						</div>
+
 					</div>
 				</div>
 				// <ul>

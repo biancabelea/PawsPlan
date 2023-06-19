@@ -3,6 +3,7 @@
     --baby-blue: #81a1c8;
     --baby-blue-darker: #456fa2;
     --dark: #18314f;
+    --dark-purple:#180026;
 }
 
 * {
@@ -13,7 +14,7 @@
 body {
     height: 100vh;
     width: 100%;
-    background-color: var(--dark);
+    background-color: var(--dark-purple);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -62,6 +63,8 @@ a {
     flex-direction: column;
     justify-content: space-evenly;
     margin-left: 50px;
+    z-index: 3;
+    position: relative;
 }
 
 .icon {
