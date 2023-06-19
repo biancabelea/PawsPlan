@@ -32,7 +32,6 @@ const DeletePet = ({userId, petId, onDelete}) => {
 			) : (
 				<button onClick={deleteConfirmation}>Șterge animalul</button>
 			)}
-			<Logout userId={userId}/>
 		</div>
 	);
 };

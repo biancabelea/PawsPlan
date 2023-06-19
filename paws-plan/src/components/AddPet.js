@@ -59,7 +59,6 @@ const AddPet = (props) => {
 					<button>Adaugă animal</button>
 				</div>
 			</form>
-			<Logout userId={props.userId}/>
 		</div>
 	)
 };

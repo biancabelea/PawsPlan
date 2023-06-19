@@ -57,7 +57,6 @@ const Login = () => {
 			{loggedIn ? (
 				<div>
 					<h2>Bine ai venit, {loggedEmail}!</h2>
-					<Logout/>
 				</div>
 			) : (
 				<div className="login-content">

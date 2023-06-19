@@ -1,9 +1,11 @@
 import React, {useContext} from 'react';
 import { auth } from '../../firebaseConfig';
 import {UserContext} from "../UserContext";
+import "../../styles/Logout.css";
 
-const Logout = ({userId}) => {
+const Logout = () => {
 	const { resetUserContext } = useContext(UserContext);
+	const { userId } = useContext(UserContext);
 
 	const handleLogout = async () => {
 		try {
@@ -18,7 +20,7 @@ const Logout = ({userId}) => {
 	return (
 		<div>
 			{userId && (
-				<button onClick={handleLogout}>Log Out</button>
+				<button className="logout-button" onClick={handleLogout}>Log Out</button>
 			)}
 		</div>
 	);

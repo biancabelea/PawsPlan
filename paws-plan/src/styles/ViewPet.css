@@ -1,0 +1,96 @@
+:root {
+    --dark-blue: #26385e;
+    --bright-blue: #6de0ff;
+}
+.view-pets {
+    display: flex;
+    flex-direction: row;
+    /*align-items: center;*/
+    justify-content: space-between;
+    width: 100%;
+    height: 700px;
+
+}
+
+.names-pets {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+
+    width: 280px;
+    background-color: var(--dark-blue);
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+}
+
+.names-pets h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.pet-card {
+    border: 1px solid white;
+    height: 50px;
+    border-radius: 10px;
+    margin: 10px 0px;
+    text-align:start;
+    padding: 0px 20px;
+    line-height: 50px;
+    background-color: transparent;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.pet-card:hover{
+    background-color: var(--bright-blue);
+    color: var(--dark-blue);
+}
+
+.meds{
+    border: 2px solid var(--dark-blue);
+    border-radius: 10px;
+    height: 100%;
+}
+
+.med-pets {
+    width: 500px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: 150px;
+    grid-gap: 40px 0;
+}
+
+.med-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid var(--dark-blue);
+    background-color: transparent;
+    height: 150px;
+    border-radius: 10px;
+    margin: 20px 20px;
+    padding: 0px 20px;
+    line-height: 30px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.meds h2{
+    font-size: 22px;
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+.med-card h3{
+    font-size: 22px;
+}
+
+.info-pet {
+    width: 350px;
+}
+

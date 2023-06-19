@@ -25,7 +25,6 @@ const Homepage = ({loggedUserName}) => {
 			{userId ? (
 				<div>
 					{/*<h1>welcome {ownerName}</h1>*/}
-					{/*<Logout userId={userId}/>*/}
 					<Menu/>
 				</div>
 			) : (

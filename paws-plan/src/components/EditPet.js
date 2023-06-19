@@ -53,7 +53,6 @@ const EditPet = ({userId, petId, petName, age, breed}) => {
 				</div>
 				<button type="submit">Salvează</button>
 			</form>
-			<Logout userId={userId}/>
 		</div>
 	);
 };
