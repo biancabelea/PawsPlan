@@ -1,16 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { firestore } from "../firebaseConfig";
 import { collection, query, getDocs } from 'firebase/firestore';
-import EditPet from "./EditPet";
-import DeletePet from "./DeletePet";
-import Logout from "./authentication/Logout";
 import {UserContext} from "./UserContext";
 import "../styles/ViewPet.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaw } from '@fortawesome/free-solid-svg-icons';
-import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import AddPet from "./AddPet";
+import PetNames from "./PetNames";
+import MedForPet from "./MedForPet";
+import PetDetails from "./PetDetails";
 
 
 const ViewPets = () => {
@@ -60,42 +55,9 @@ const ViewPets = () => {
 				<p>Nu ai adăugat animale.</p>
 			) : (
 				<div className="view-pets">
-					<div className="names-pets">
-						<h2>Animalele mele</h2>
-						{pets.map((pet) => (
-								<button key={pet.petId} className="pet-card">
-									<h3><FontAwesomeIcon className="icon" icon={faPaw}/>{pet.petName}</h3>
-								</button>
-							))}
-					</div>
-					<div className="meds">
-						<h2>Medicația lui jygvyutfvuybi</h2>
-						<div className="med-pets">
-							{pets.map((pet) => (
-								<button key={pet.petId} className="med-card">
-									<h3>{pet.petName}</h3>
-									<p>Vârsta: {pet.age}</p>
-									<p>Rasa: {pet.breed}</p>
-								</button>
-
-							))}
-						</div>
-					</div>
-					<div className="info-pet">
-						<div className="info">
-							<h2>Nume animal selectat</h2>
-							<div className="info-card">
-								<p><FontAwesomeIcon className="icon" icon={faCalendarDays}/>Vârsta: 3 ani</p>
-								<p><FontAwesomeIcon className="icon" icon={faHeart}/>Rasa: Bichon</p>
-							</div>
-
-							<div className="animal-buttons">
-								<button>Edit</button>
-								<button>Delete</button>
-							</div>
-						</div>
-
-					</div>
+					<PetNames/>
+					<MedForPet/>
+					<PetDetails/>
 				</div>
 				// <ul>
 				// 	{pets.map((pet) => (

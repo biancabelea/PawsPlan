@@ -1,12 +1,12 @@
 import React, {useContext, useState} from "react";
-import Register from "./authentication/Register";
-import Login from "./authentication/Login";
 import { useNavigate } from 'react-router-dom';
 import {UserContext} from "./UserContext";
-import Logout from "./authentication/Logout";
 import Menu from "./Menu";
+import ViewPets from "./ViewPets";
+// import "../styles/Menu.css";
+import "../styles/Homepage.css";
 
-const Homepage = ({loggedUserName}) => {
+const Homepage = () => {
 	const { userId } = useContext(UserContext);
 	const { ownerName } = useContext(UserContext);
 
@@ -23,8 +23,13 @@ const Homepage = ({loggedUserName}) => {
 	return (
 		<div>
 			{userId ? (
-				<div>
+				<div className="body-container">
 					<Menu/>
+					<div className="content-container">
+						<div className="content">
+							<ViewPets/>
+						</div>
+					</div>
 				</div>
 			) : (
 			<div>

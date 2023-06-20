@@ -35,20 +35,9 @@ const App = () => {
                         <Route path="/" element={<Homepage/>} />
                         <Route path="/login" element={<Login/>} />
                         <Route path="/register" element={<Register/>} />
+                        <Route path="/add-pet" element={<AddPet/>} />
                     </Routes>
                 </Router>
-                {/*<h1>My Firebase App</h1>*/}
-                {/*{userId ? (*/}
-                {/*    <>*/}
-                {/*        <AddPet userId={userId}/>*/}
-                {/*        <ViewPets userId={userId}/>*/}
-                {/*    </>*/}
-                {/*) : (*/}
-                {/*    <>*/}
-                {/*        <Register/>*/}
-                {/*        <Login/>*/}
-                {/*    </>*/}
-                {/*)}*/}
             </div>
         </UserProvider>
     );

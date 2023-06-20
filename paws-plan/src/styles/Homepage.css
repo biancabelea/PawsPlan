@@ -1,0 +1,38 @@
+:root {
+    --white: #ffffff;
+    --baby-blue: #81a1c8;
+    --baby-blue-darker: #456fa2;
+    --dark: #18314f;
+    --dark-purple:#180026;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto;
+}
+body {
+    height: 100vh;
+    width: 100%;
+    background-color: var(--dark-purple);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.body-container{
+    width:1900px;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    align-items: center;
+}
+
+.content-container{
+    height: 1000px;
+    width:80%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
