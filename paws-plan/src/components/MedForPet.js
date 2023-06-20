@@ -3,6 +3,9 @@ import {UserContext} from "./UserContext";
 import {collection, getDocs, query} from "firebase/firestore";
 import {firestore} from "../firebaseConfig";
 import "../styles/ViewPet.css"
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const MedForPet = () => {
 	const { userId } = useContext(UserContext);
@@ -35,14 +38,18 @@ const MedForPet = () => {
 
 	return (
 		<div className="meds">
-			<h2>Medicația lui jygvyutfvuybi</h2>
+			<div className="header">
+				<h2>Medicația lui jygvyutfvuybi</h2>
+				<button className="addmed"><FontAwesomeIcon className="icon" icon={faPlus}/></button>
+			</div>
 			<div className="med-pets">
 				{pets.map((pet) => (
-					<button key={pet.petId} className="med-card">
+					<div key={pet.petId} className="med-card">
 						<h3>{pet.petName}</h3>
 						<p>Vârsta: {pet.age}</p>
 						<p>Rasa: {pet.breed}</p>
-					</button>
+						<button className="deletemed"><FontAwesomeIcon className="icon" icon={faTrash}/></button>
+					</div>
 				))}
 			</div>
 		</div>

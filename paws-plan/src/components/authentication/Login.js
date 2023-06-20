@@ -1,6 +1,5 @@
 import React, {useContext, useState} from 'react';
 import { auth, firestore } from '../../firebaseConfig';
-import Logout from "./Logout";
 import '../../styles/Login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock } from '@fortawesome/free-solid-svg-icons';

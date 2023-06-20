@@ -29,10 +29,92 @@ body {
     align-items: center;
 }
 
-.content-container{
+.content-container {
     height: 1000px;
     width:80%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
+}
+
+.homepage {
+    position: relative;
+    height: 100vh;
+    width: 1920px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.homepage::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../pictures/homepage.jpg");
+    background-size: cover;
+    filter: blur(4px);
+    z-index: -1;
+}
+
+.navbar {
+    height: 100px;
+    width: 1920px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: start;
+}
+
+.logo-image {
+    width: 200px;
+    z-index: 3;
+    position: absolute;
+    bottom: 26%;
+    left: 1%;
+}
+
+.user-buttons{
+    margin: 30px 20px;
+    width: 330px;
+    height: 300px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-buttons button{
+    background-color: white;
+    color: var(--dark-purple);
+    font-size: 20px;
+    width: 150px;
+    height: 40px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.content-homepage{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.motto h1{
+    color: var(--dark-purple);
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.motto{
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    text-shadow: 1px 1px 4px var(--dark-purple);
 }

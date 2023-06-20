@@ -76,6 +76,7 @@ body {
     color: var(--white);
     cursor: pointer;
     z-index: 2;
+    font-size: 15px;
 }
 
 .register-button:hover {
