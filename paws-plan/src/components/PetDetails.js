@@ -4,20 +4,52 @@ import { faCalendarDays, faHeart } from "@fortawesome/free-solid-svg-icons";
 import "../styles/ViewPet.css";
 import {deleteDoc, doc} from "firebase/firestore";
 import {firestore} from "../firebaseConfig";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 const PetDetails = ({selectedPet}) => {
 	const userId = sessionStorage.getItem('userId');
 
-	const handleDelete = async () => {
+	// const handleDelete = async () => {
+	// 	try {
+	// 		const petDocRef = doc(firestore, "users", userId, "pets", selectedPet.petId);
+	// 		await deleteDoc(petDocRef);
+	// 		window.location.reload();
+	// 		console.log("Animalul a fost șters cu succes!");
+	// 	} catch (error) {
+	// 		console.error("Eroare la ștergerea animalulul.", error);
+	// 	}
+	// };
+
+	const handleDelete = () => {
+		const MySwal = withReactContent(Swal);
+
+		MySwal.fire({
+			title: 'Ești sigur că vrei să ștergi animalul?',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#180026FF',
+			cancelButtonColor: '#8B0000FF',
+			confirmButtonText: 'OK',
+			cancelButtonText: 'Anulare'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				deletePet();
+			}
+		});
+	};
+
+	const deletePet = async () => {
 		try {
-			const petDocRef = doc(firestore, "users", userId, "pets", selectedPet.petId);
+			const petDocRef = doc(firestore, 'users', userId, 'pets', selectedPet.petId);
 			await deleteDoc(petDocRef);
 			window.location.reload();
-			console.log("Animalul a fost șters cu succes!");
+			console.log('Animalul a fost șters cu succes!');
 		} catch (error) {
-			console.error("Eroare la ștergerea animalulul.", error);
+			console.error('Eroare la ștergerea animalului.', error);
 		}
 	};
+
 
 	if (!selectedPet) {
 		return <p>Apasă pe numele unui animal pentru detalii.</p>;
