@@ -11,7 +11,6 @@ const AddMedication = () => {
 	const searchParams = new URLSearchParams(location.search);
 
 	const petId = searchParams.get('petId');
-	const petName = searchParams.get('petName');
 
 	const [medName, setMedName] = useState('');
 	const [dosage, setDosage] = useState('');

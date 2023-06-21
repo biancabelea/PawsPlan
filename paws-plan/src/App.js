@@ -7,6 +7,7 @@ import Homepage from "./components/Homepage";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { UserProvider } from "./components/UserContext";
 import AddMedication from "./components/AddMedication";
+import MyPets from "./components/MyPets";
 
 const App = () => {
 
@@ -32,7 +33,7 @@ const App = () => {
                 <Router>
                     <Routes>
                         <Route path="/" element={<Homepage/>} />
-                        <Route path="/my-pets" element={<Homepage/>} />
+                        <Route path="/my-pets" element={<MyPets/>} />
                         <Route path="/login" element={<Login/>} />
                         <Route path="/register" element={<Register/>} />
                         <Route path="/add-pet" element={<AddPet userId={userId}/>} />

@@ -5,6 +5,7 @@ import Menu from "./Menu";
 import ViewPets from "./ViewPets";
 import "../styles/Homepage.css";
 import {ReactComponent as Logo} from "../pictures/logo.svg";
+import MyPets from "./MyPets";
 
 const Homepage = () => {
 	const { userId } = useContext(UserContext);
@@ -22,14 +23,7 @@ const Homepage = () => {
 	return (
 		<div>
 			{userId ? (
-				<div className="body-container">
-					<Menu/>
-					<div className="content-container">
-						<div className="content">
-							<ViewPets/>
-						</div>
-					</div>
-				</div>
+				<MyPets/>
 			) : (
 			<div className="homepage">
 				<div className="navbar">

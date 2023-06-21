@@ -14,7 +14,7 @@ const MedForPet = ({selectedPet, medications}) => {
 	const navigate = useNavigate();
 
 	const handleAddMedication = () => {
-		navigate(`/add-medication?petId=${selectedPet.petId}&petName=${selectedPet.petName}`);
+		navigate(`/add-medication?petId=${selectedPet.petId}}`);
 	}
 
 	if (!selectedPet) {
