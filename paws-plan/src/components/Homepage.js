@@ -1,16 +1,13 @@
-import React, {useContext, useState} from "react";
-import { useNavigate,Route, Routes } from 'react-router-dom';
-import {UserContext} from "./UserContext";
+import React, { useContext } from "react";
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from "./UserContext";
 import Menu from "./Menu";
 import ViewPets from "./ViewPets";
-// import "../styles/Menu.css";
 import "../styles/Homepage.css";
-import AddPet from "./AddPet";
 import {ReactComponent as Logo} from "../pictures/logo.svg";
 
 const Homepage = () => {
 	const { userId } = useContext(UserContext);
-	const { ownerName } = useContext(UserContext);
 
 	const navigate = useNavigate();
 

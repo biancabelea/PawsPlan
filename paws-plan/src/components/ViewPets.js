@@ -7,13 +7,11 @@ import PetNames from "./PetNames";
 import MedForPet from "./MedForPet";
 import PetDetails from "./PetDetails";
 
-
 const ViewPets = () => {
 	const { userId } = useContext(UserContext);
-	const { ownerName } = useContext(UserContext);
 
 	const [pets, setPets] = useState([]);
-	const [selectedPetId, setSelectedPetId] = useState(null);
+	const [selectedPet, setSelectedPet] = useState(null);
 
 	useEffect(() => {
 		const fetchPets = async () => {
@@ -37,16 +35,8 @@ const ViewPets = () => {
 		fetchPets();
 	}, [userId]);
 
-	const handleEditPet = (petId) => {
-		setSelectedPetId(petId);
-	};
-
-	const handleCancelEditPet = () => {
-		setSelectedPetId(null);
-	};
-
-	const handleDeletePet = (petId) => {
-		setPets((prevPets) => prevPets.filter((pet) => pet.petId !== petId));
+	const handleSelectPet = (pet) => {
+		setSelectedPet(pet);
 	};
 
 	return (
@@ -55,40 +45,10 @@ const ViewPets = () => {
 				<p>Nu ai adăugat animale.</p>
 			) : (
 				<div className="view-pets">
-					<PetNames/>
+					<PetNames onSelectPet={handleSelectPet}/>
 					<MedForPet/>
-					<PetDetails/>
+					<PetDetails selectedPet={selectedPet}/>
 				</div>
-				// <ul>
-				// 	{pets.map((pet) => (
-				// 		<li key={pet.petId}>
-				// 			<h3>{pet.petName}</h3>
-				// 			<p>Vârsta: {pet.age}</p>
-				// 			<p>Rasa: {pet.breed}</p>
-				// 			{selectedPetId === pet.petId ? (
-				// 				<EditPet
-				// 					userId={userId}
-				// 					petId={pet.petId}
-				// 					petName={pet.petName}
-				// 					age={pet.age}
-				// 					breed={pet.breed}
-				// 					onCancelEdit={handleCancelEditPet}
-				// 				/>
-				// 			) : (
-				// 				<>
-				// 					<button onClick={() => handleEditPet(pet.petId)}>
-				// 						Editează animalul</button>
-				// 					<DeletePet
-				// 						userId={userId}
-				// 						petId={pet.petId}
-				// 						onDelete={handleDeletePet}
-				// 					/>
-				// 				</>
-				// 			)
-				// 			}
-				// 		</li>
-				// 	))}
-				// </ul>
 			)}
 		</div>
 	);

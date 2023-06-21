@@ -1,17 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPaw} from "@fortawesome/free-solid-svg-icons";
-import {UserContext} from "./UserContext";
-import {collection, getDocs, query} from "firebase/firestore";
-import {firestore} from "../firebaseConfig";
-import "../styles/ViewPet.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaw } from "@fortawesome/free-solid-svg-icons";
+import { UserContext } from "./UserContext";
+import { collection, getDocs, query } from "firebase/firestore";
+import { firestore } from "../firebaseConfig";
+import "../styles/ViewPet.css";
 
-const PetNames = () => {
+const PetNames = ({ onSelectPet }) => {
 	const { userId } = useContext(UserContext);
-	const { ownerName } = useContext(UserContext);
 
 	const [pets, setPets] = useState([]);
-	const [selectedPetId, setSelectedPetId] = useState(null);
 
 	useEffect(() => {
 		const fetchPets = async () => {
@@ -34,16 +32,21 @@ const PetNames = () => {
 		}
 		fetchPets();
 	}, [userId]);
+
+	const handleSelectPet = (selectedPetId) => {
+		onSelectPet(selectedPetId);
+	};
+
 	return (
 		<div className="names-pets">
 			<h2>Animalele mele</h2>
 			{pets.map((pet) => (
-				<button key={pet.petId} className="pet-card">
-					<h3><FontAwesomeIcon className="icon" icon={faPaw}/>{pet.petName}</h3>
+				<button key={pet.petId} className="pet-card" onClick={() => handleSelectPet(pet)}>
+					<h3><FontAwesomeIcon className="icon" icon={faPaw} />{pet.petName}</h3>
 				</button>
 			))}
 		</div>
-	)
-}
+	);
+};
 
 export default PetNames;
