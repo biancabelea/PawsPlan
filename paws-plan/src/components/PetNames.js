@@ -1,13 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect} from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
-import { UserContext } from "./UserContext";
 import { collection, getDocs, query } from "firebase/firestore";
 import { firestore } from "../firebaseConfig";
 import "../styles/ViewPet.css";
 
 const PetNames = ({ onSelectPet }) => {
-	const { userId } = useContext(UserContext);
+	const userId = sessionStorage.getItem('userId');
 
 	const [pets, setPets] = useState([]);
 

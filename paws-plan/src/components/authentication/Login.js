@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import { auth, firestore } from '../../firebaseConfig';
 import '../../styles/Login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,12 +7,9 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import {ReactComponent as DoctorPic} from "../../pictures/undraw_doctors.svg"
 import {ReactComponent as DogPic} from "../../pictures/undraw_dog.svg";
 import { useNavigate } from 'react-router-dom';
-import {UserContext} from "../UserContext";
 
 
 const Login = () => {
-	const { setUserId, setOwnerName } = useContext(UserContext);
-
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [loggedEmail, setLoggedEmail] = useState('');
@@ -33,13 +30,13 @@ const Login = () => {
 				const ownerName = userData.ownerName;
 
 				console.log('Log in cu succes!');
-				setOwnerName(ownerName);
 				setLoggedEmail(email);
 				setEmail('');
 				setPassword('');
 				setLoggedIn(true);
 				const userId = user.uid;
-				setUserId(userId);
+				sessionStorage.setItem('userId', userId);
+				sessionStorage.setItem('ownerName', ownerName);
 
 				navigate('/');
 			}

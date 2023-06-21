@@ -2,8 +2,23 @@ import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays, faHeart } from "@fortawesome/free-solid-svg-icons";
 import "../styles/ViewPet.css";
+import {deleteDoc, doc} from "firebase/firestore";
+import {firestore} from "../firebaseConfig";
 
 const PetDetails = ({selectedPet}) => {
+	const userId = sessionStorage.getItem('userId');
+
+	const handleDelete = async () => {
+		try {
+			const petDocRef = doc(firestore, "users", userId, "pets", selectedPet.petId);
+			await deleteDoc(petDocRef);
+			window.location.reload();
+			console.log("Animalul a fost șters cu succes!");
+		} catch (error) {
+			console.error("Eroare la ștergerea animalulul.", error);
+		}
+	};
+
 	if (!selectedPet) {
 		return <p>Apasă pe numele unui animal pentru detalii.</p>;
 	}
@@ -18,7 +33,7 @@ const PetDetails = ({selectedPet}) => {
 				</div>
 				<div className="animal-buttons">
 					<button>Edit</button>
-					<button>Delete</button>
+					<button onClick={handleDelete}>Delete</button>
 				</div>
 			</div>
 

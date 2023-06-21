@@ -1,18 +1,13 @@
-import React, {useContext} from "react";
+import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBone } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import "../styles/Menu.css";
-import {UserContext} from "./UserContext";
 import Logout from "./authentication/Logout";
 import {ReactComponent as Logo} from "../pictures/logo.svg"
-import {useLocation, useNavigate} from 'react-router-dom';
 
 const Menu = () => {
-	const { userId } = useContext(UserContext);
-	const { ownerName } = useContext(UserContext);
-
-	const navigate = useNavigate();
+	const ownerName = sessionStorage.getItem('ownerName');
 
 	return (
 		<menu className="menu">

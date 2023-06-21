@@ -1,17 +1,19 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import { auth } from '../../firebaseConfig';
-import {UserContext} from "../UserContext";
 import "../../styles/Logout.css";
+import {useNavigate} from "react-router-dom";
 
 const Logout = () => {
-	const { resetUserContext } = useContext(UserContext);
-	const { userId } = useContext(UserContext);
+	const userId = sessionStorage.getItem('userId');
+
+	const navigate = useNavigate();
 
 	const handleLogout = async () => {
 		try {
 			await auth.signOut();
 			console.log('Log out cu succes!');
-			resetUserContext();
+			sessionStorage.clear();
+			navigate('/');
 		} catch (error) {
 			console.error('Eroare la log out:', error);
 		}

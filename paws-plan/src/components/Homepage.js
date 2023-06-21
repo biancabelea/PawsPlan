@@ -1,14 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from "./UserContext";
-import Menu from "./Menu";
-import ViewPets from "./ViewPets";
 import "../styles/Homepage.css";
 import {ReactComponent as Logo} from "../pictures/logo.svg";
 import MyPets from "./MyPets";
 
 const Homepage = () => {
-	const { userId } = useContext(UserContext);
+
+	const userId = sessionStorage.getItem('userId');
 
 	const navigate = useNavigate();
 

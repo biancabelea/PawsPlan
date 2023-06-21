@@ -1,11 +1,11 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useState} from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { firestore } from '../firebaseConfig';
-import { UserContext } from './UserContext';
 import { useNavigate, useLocation } from "react-router-dom";
 
 const AddMedication = () => {
-	const { userId } = useContext(UserContext);
+	const userId = sessionStorage.getItem('userId');
+
 	const navigate = useNavigate();
 	const location = useLocation();
 	const searchParams = new URLSearchParams(location.search);

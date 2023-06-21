@@ -5,7 +5,6 @@ import Register from "./components/authentication/Register";
 import Login from "./components/authentication/Login";
 import Homepage from "./components/Homepage";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { UserProvider } from "./components/UserContext";
 import AddMedication from "./components/AddMedication";
 import MyPets from "./components/MyPets";
 
@@ -28,7 +27,6 @@ const App = () => {
         }, []);
 
     return (
-        <UserProvider>
             <div>
                 <Router>
                     <Routes>
@@ -41,7 +39,6 @@ const App = () => {
                     </Routes>
                 </Router>
             </div>
-        </UserProvider>
     );
 };
 

@@ -1,14 +1,13 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect} from 'react';
 import { firestore } from "../firebaseConfig";
 import { collection, query, getDocs } from 'firebase/firestore';
-import {UserContext} from "./UserContext";
 import "../styles/ViewPet.css";
 import PetNames from "./PetNames";
 import MedForPet from "./MedForPet";
 import PetDetails from "./PetDetails";
 
 const ViewPets = () => {
-	const { userId } = useContext(UserContext);
+	const userId = sessionStorage.getItem('userId');
 
 	const [pets, setPets] = useState([]);
 	const [selectedPet, setSelectedPet] = useState(null);
