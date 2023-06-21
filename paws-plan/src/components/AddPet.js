@@ -4,33 +4,56 @@ import { collection, addDoc, doc } from 'firebase/firestore';
 import Menu from "./Menu";
 import "../styles/Menu.css";
 import "../styles/AddPet.css";
+import Swal from 'sweetalert2';
+import {useNavigate} from "react-router-dom";
 
 const AddPet = ({userId}) => {
 	const [petName, setPetName] = useState('');
 	const [age, setAge] = useState(0);
 	const [breed, setBreed] = useState('');
 
-	const addPet = async (e) => {
-		e.preventDefault();
-		if (petName !== "") {
-			try {
-				const userDocRef = doc(firestore, "users", userId);
-				const petsCollectionRef = collection(userDocRef, "pets");
-				const petDocRef = await addDoc(petsCollectionRef, {
-					age: age,
-					breed: breed,
-					petName: petName,
-				});
+	const navigate = useNavigate();
 
-				setPetName("");
-				setAge(0);
-				setBreed("");
-				console.log('Animalul a fost adăugat cu succes!');
-			} catch (error) {
-				console.error('Eroare la adaugarea animalului: ', error);
-			}
+	const handleAddPet = async (e) => {
+		e.preventDefault();
+		if (petName !== '') {
+			Swal.fire({
+				title: 'Adaugă animal',
+				text: 'Ești sigur că vrei să adaugi animalul?',
+				icon: 'question',
+				showCancelButton: true,
+				confirmButtonColor: '#180026FF',
+				cancelButtonColor: '#8B0000FF',
+				confirmButtonText: 'Adaugă',
+				cancelButtonText: 'Anulare'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					addPet();
+				}
+			});
 		}
 	}
+
+	const addPet = async () => {
+		try {
+			const userDocRef = doc(firestore, 'users', userId);
+			const petsCollectionRef = collection(userDocRef, 'pets');
+			const petDocRef = await addDoc(petsCollectionRef, {
+				age: age,
+				breed: breed,
+				petName: petName,
+			});
+
+			setPetName('');
+			setAge(0);
+			setBreed('');
+			console.log('Animalul a fost adăugat cu succes!');
+			navigate('/');
+		} catch (error) {
+			console.error('Eroare la adaugarea animalului:', error);
+		}
+	};
+
 
 	return (
 		<div className="body-container">
@@ -67,7 +90,7 @@ const AddPet = ({userId}) => {
 							/>
 						</div>
 						<div className="btn-container">
-							<button className="addpet-button">Adaugă animal</button>
+							<button className="addpet-button" onClick={handleAddPet}>Adaugă animal</button>
 						</div>
 					</form>
 				</div>

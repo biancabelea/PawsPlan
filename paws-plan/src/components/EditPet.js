@@ -1,9 +1,21 @@
 import React, { useState } from 'react';
 import { firestore } from "../firebaseConfig";
 import { doc, updateDoc } from 'firebase/firestore';
-import Logout from "./authentication/Logout";
+import {useLocation, useNavigate} from "react-router-dom";
+import Swal from 'sweetalert2';
 
-const EditPet = ({userId, petId, petName, age, breed}) => {
+
+const EditPet = () => {
+	const userId = sessionStorage.getItem('userId');
+
+	const location = useLocation();
+	const { petName, age, breed } = location.state;
+	const searchParams = new URLSearchParams(location.search);
+
+	const petId = searchParams.get('petId');
+
+	const navigate = useNavigate();
+
 	const [editedPetName, setEditedPetName] = useState(petName);
 	const [editedAge, setEditedAge] = useState(age);
 	const [editedBreed, setEditedBreed] = useState(breed);
@@ -11,17 +23,32 @@ const EditPet = ({userId, petId, petName, age, breed}) => {
 	const handleUpdate = async (e) => {
 		e.preventDefault();
 		try {
-			const petDocRef = doc(firestore, "users", userId, "pets", petId);
-			await updateDoc(petDocRef, {
-				petName: editedPetName,
-				age: editedAge,
-				breed: editedBreed
+			const confirmed = await Swal.fire({
+				title: 'Confirmare',
+				text: 'Ești sigur că vrei să actualizezi animalul?',
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Da',
+				cancelButtonText: 'Anulează'
 			});
-			console.log("Animalul a fost actualizat cu succes!");
+
+			if (confirmed.isConfirmed) {
+				const petDocRef = doc(firestore, "users", userId, "pets", petId);
+				await updateDoc(petDocRef, {
+					petName: editedPetName,
+					age: editedAge,
+					breed: editedBreed
+				});
+				console.log("Animalul a fost actualizat cu succes!");
+				navigate('/my-pets');
+			}
 		} catch (error) {
 			console.error("Eroare la actualizarea animalului.", error);
 		}
 	};
+
 
 	return (
 		<div>

@@ -49,6 +49,7 @@
     border: 2px solid var(--dark-blue);
     border-radius: 10px;
     height: 100%;
+    margin: 0px 50px;
 }
 
 .med-pets {

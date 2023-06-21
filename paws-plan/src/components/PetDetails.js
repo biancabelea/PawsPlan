@@ -6,20 +6,11 @@ import {deleteDoc, doc} from "firebase/firestore";
 import {firestore} from "../firebaseConfig";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import {useNavigate} from "react-router-dom";
 
 const PetDetails = ({selectedPet}) => {
 	const userId = sessionStorage.getItem('userId');
-
-	// const handleDelete = async () => {
-	// 	try {
-	// 		const petDocRef = doc(firestore, "users", userId, "pets", selectedPet.petId);
-	// 		await deleteDoc(petDocRef);
-	// 		window.location.reload();
-	// 		console.log("Animalul a fost șters cu succes!");
-	// 	} catch (error) {
-	// 		console.error("Eroare la ștergerea animalulul.", error);
-	// 	}
-	// };
+	const navigate = useNavigate();
 
 	const handleDelete = () => {
 		const MySwal = withReactContent(Swal);
@@ -50,6 +41,16 @@ const PetDetails = ({selectedPet}) => {
 		}
 	};
 
+	const handleEditPetRedirect = () => {
+		navigate(`/edit-pet?petId=${selectedPet.petId}`, {
+			state: {
+				petName: selectedPet.petName,
+				age: selectedPet.age,
+				breed: selectedPet.breed
+			}
+		});
+	}
+
 
 	if (!selectedPet) {
 		return <p>Apasă pe numele unui animal pentru detalii.</p>;
@@ -64,7 +65,7 @@ const PetDetails = ({selectedPet}) => {
 					<p><FontAwesomeIcon className="icon" icon={faHeart}/>Rasa: {selectedPet.breed}</p>
 				</div>
 				<div className="animal-buttons">
-					<button>Edit</button>
+					<button onClick={handleEditPetRedirect}>Edit</button>
 					<button onClick={handleDelete}>Delete</button>
 				</div>
 			</div>
