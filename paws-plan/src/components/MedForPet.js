@@ -7,13 +7,14 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { useNavigate } from 'react-router-dom';
+import { Timestamp } from 'firebase/firestore';
 
 const MedForPet = ({selectedPet, medications}) => {
 	const { userId } = useContext(UserContext);
 	const navigate = useNavigate();
 
 	const handleAddMedication = () => {
-		navigate('/add-medication');
+		navigate(`/add-medication?petId=${selectedPet.petId}&petName=${selectedPet.petName}`);
 	}
 
 	if (!selectedPet) {
@@ -34,7 +35,7 @@ const MedForPet = ({selectedPet, medications}) => {
 					<div key={medication.medId}>
 						<p>Nume medicație: {medication.medName}</p>
 						<p>Dozaj: {medication.dosage}</p>
-						<p>Timestamp: {medication.timestamp.toDate().toString()}</p>
+						<p>Timestamp: {medication.timestamp && medication.timestamp.toString()}</p>
 						<button className="deletemed"><FontAwesomeIcon className="icon" icon={faTrash}/></button>
 					</div>
 				))}

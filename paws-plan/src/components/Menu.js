@@ -16,7 +16,7 @@ const Menu = () => {
 			<Logo className="logo"/>
 			<div className="welcome"><h1>Bine ai venit, <br/> {ownerName}!</h1></div>
 			<div className="menu-contents">
-				<a href="/"><FontAwesomeIcon className="icon" icon={faBone}/>Animalele mele</a><br/>
+				<a href="/my-pets"><FontAwesomeIcon className="icon" icon={faBone}/>Animalele mele</a><br/>
 				<a href="/add-pet"><FontAwesomeIcon className="icon" icon={faPlus}/>Adaugă un animal</a><br/>
 				<Logout/>
 			</div>
