@@ -12,6 +12,7 @@ const ViewPets = () => {
 
 	const [pets, setPets] = useState([]);
 	const [selectedPet, setSelectedPet] = useState(null);
+	const [medications, setMedications] = useState([]);
 
 	useEffect(() => {
 		const fetchPets = async () => {
@@ -35,6 +36,33 @@ const ViewPets = () => {
 		fetchPets();
 	}, [userId]);
 
+	useEffect(() => {
+		const fetchMedications = async () => {
+			try {
+				if (selectedPet) {
+					const medicationsRef = collection(firestore, 'users', userId, 'pets', selectedPet.petId, 'medication');
+					const medicationsQuery = query(medicationsRef);
+					const medicationsSnapshot = await getDocs(medicationsQuery);
+					const medicationsData = medicationsSnapshot.docs.map((doc) => {
+						const data = doc.data();
+						return {
+							medId: doc.id,
+							medName: data.medName,
+							dosage: data.dosage,
+							timestamp: data.timestamp,
+						};
+					});
+					console.log('Medications:', medicationsData);
+					setMedications(medicationsData);
+				}
+			} catch (error) {
+				console.error('Eroare la afișarea medicatiilor!', error);
+			}
+		};
+
+		fetchMedications();
+	}, [userId, selectedPet]);
+
 	const handleSelectPet = (pet) => {
 		setSelectedPet(pet);
 	};
@@ -46,7 +74,7 @@ const ViewPets = () => {
 			) : (
 				<div className="view-pets">
 					<PetNames onSelectPet={handleSelectPet}/>
-					<MedForPet/>
+					<MedForPet selectedPet={selectedPet} medications={medications}/>
 					<PetDetails selectedPet={selectedPet}/>
 				</div>
 			)}

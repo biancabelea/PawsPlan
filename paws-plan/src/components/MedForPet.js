@@ -6,48 +6,35 @@ import "../styles/ViewPet.css"
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { useNavigate } from 'react-router-dom';
 
-const MedForPet = () => {
+const MedForPet = ({selectedPet, medications}) => {
 	const { userId } = useContext(UserContext);
-	const { ownerName } = useContext(UserContext);
+	const navigate = useNavigate();
 
-	const [pets, setPets] = useState([]);
-	const [selectedPetId, setSelectedPetId] = useState(null);
+	const handleAddMedication = () => {
+		navigate('/add-medication');
+	}
 
-	useEffect(() => {
-		const fetchPets = async () => {
-			try {
-				const petsQuery = query(collection(firestore, "users", userId, "pets"));
-				const petsSnapshot = await getDocs(petsQuery);
-				const petsData = petsSnapshot.docs.map((doc) => {
-					const data = doc.data();
-					return {
-						petId: doc.id,
-						petName: data.petName,
-						age: data.age,
-						breed: data.breed
-					};
-				});
-				setPets(petsData);
-			} catch (error) {
-				console.error("Eroare la afișarea animalelor.", error);
-			}
-		}
-		fetchPets();
-	}, [userId]);
+	if (!selectedPet) {
+		return <p>Select a pet to view medications.</p>;
+	}
 
 	return (
 		<div className="meds">
 			<div className="header">
-				<h2>Medicația lui jygvyutfvuybi</h2>
-				<button className="addmed"><FontAwesomeIcon className="icon" icon={faPlus}/></button>
+				<h2>Medicația lui {selectedPet.petName}</h2>
+				<button className="addmed"
+						onClick={handleAddMedication}>
+					<FontAwesomeIcon className="icon" icon={faPlus}/>
+				</button>
 			</div>
 			<div className="med-pets">
-				{pets.map((pet) => (
-					<div key={pet.petId} className="med-card">
-						<h3>{pet.petName}</h3>
-						<p>Vârsta: {pet.age}</p>
-						<p>Rasa: {pet.breed}</p>
+				{medications.map((medication) => (
+					<div key={medication.medId}>
+						<p>Nume medicație: {medication.medName}</p>
+						<p>Dozaj: {medication.dosage}</p>
+						<p>Timestamp: {medication.timestamp.toDate().toString()}</p>
 						<button className="deletemed"><FontAwesomeIcon className="icon" icon={faTrash}/></button>
 					</div>
 				))}
