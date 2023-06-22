@@ -21,7 +21,7 @@ const Logout = () => {
 	return (
 		<div>
 			{userId && (
-				<button className="logout-button" onClick={handleLogout}>Log Out</button>
+				<button className="logout-button" onClick={handleLogout}>Deconectare</button>
 			)}
 		</div>
 	);

@@ -40,10 +40,9 @@ const Vets = () => {
 					<div className="content-vets">
 						{vets.map((vet) => (
 							<div className="vet-card">
-								<h1>{vet.cabinet}</h1>
-								<p> <FontAwesomeIcon className="icon" icon={faLocationDot}/>Adresa: {vet.adresa}</p>
-								<p> <FontAwesomeIcon className="icon" icon={faPhone}/>Telefon: {vet.telefon}</p>
-								<p> <FontAwesomeIcon className="icon" icon={faEnvelope}/>Email: {vet.email}</p>
+								<h2>{vet.cabinet}</h2>
+								<p> <FontAwesomeIcon className="icon" icon={faLocationDot}/>{vet.adresa}</p>
+								<p> <FontAwesomeIcon className="icon" icon={faPhone}/>{vet.telefon}</p>
 							</div>
 						))}
 					</div>

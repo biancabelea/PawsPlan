@@ -64,8 +64,8 @@ const PetDetails = ({selectedPet}) => {
 					<p><FontAwesomeIcon className="icon" icon={faHeart}/>Rasa: {selectedPet.breed}</p>
 				</div>
 				<div className="animal-buttons">
-					<button onClick={handleEditPetRedirect}>Edit</button>
-					<button onClick={handleDelete}>Delete</button>
+					<button onClick={handleEditPetRedirect}>Editare</button>
+					<button onClick={handleDelete}>Ștergere</button>
 				</div>
 			</div>
 		</div>

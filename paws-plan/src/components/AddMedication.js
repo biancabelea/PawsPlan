@@ -59,7 +59,7 @@ const AddMedication = () => {
 
 	return (
 		<div className="content-addmed">
-			<h1>Add Medication</h1>
+			<h1>Adaugă medicație</h1>
 			<div className="addmed-form">
 				<div className="addmed-label">
 					<p>Nume:</p>

@@ -2,7 +2,7 @@ import React from "react";
 import MyPets from "./MyPets";
 import { useNavigate } from 'react-router-dom';
 import "../styles/Homepage.css";
-import {ReactComponent as Logo} from "../pictures/logo.svg";
+import { ReactComponent as Logo } from "../pictures/logo.svg";
 
 const Homepage = () => {
 	const userId = sessionStorage.getItem('userId');
@@ -31,8 +31,8 @@ const Homepage = () => {
 					</div>
 				</div>
 				<div className="motto">
-					<h1>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h1>
-					<h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</h3>
+					<h1>PawsPlan: aplicația care are grijă de animăluțul tău</h1>
+					<h3>Ești veterinar? Contactează-ne și hai să fii partener în comunitatea noastră!</h3>
 				</div>
 			</div>
 			)}
