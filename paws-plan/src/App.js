@@ -9,6 +9,7 @@ import MyPets from "./components/MyPets";
 import EditPet from "./components/EditPet";
 import Vets from "./components/Vets";
 import { auth } from "./firebaseConfig";
+import EmailContactForm from "./EmailContactForm";
 
 const App = () => {
     const [userId, setUserId] = useState(null);
@@ -39,6 +40,7 @@ const App = () => {
                         <Route path="/add-medication" element={<AddMedication/>} />
                         <Route path="/edit-pet" element={<EditPet/>} />
                         <Route path="/vets" element={<Vets/>} />
+                        <Route path="/email" element={<EmailContactForm/>} />
                     </Routes>
                 </Router>
             </div>
