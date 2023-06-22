@@ -72,7 +72,7 @@ const ViewPets = () => {
 	return (
 		<div>
 			{pets.length === 0 ? (
-				<p>Nu ai adăugat animale.</p>
+				<h1 className="not-exist">Nu ai adăugat animale.</h1>
 			) : (
 				<div className="view-pets">
 					<PetNames onSelectPet={handleSelectPet}/>

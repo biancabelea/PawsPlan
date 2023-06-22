@@ -1,0 +1,43 @@
+:root {
+    --dark-blue: #26385e;
+    --bright-blue: #6de0ff;
+}
+
+.content-vets{
+    justify-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    height: 100%;
+    width: 100%;
+}
+
+.vet-card{
+    display: flex;
+    align-items:start;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 200px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid var(--dark-blue);
+    padding-left: 20px;
+    color: white;
+}
+
+.vet-card h1{
+    color: var(--dark-purple);
+    margin-bottom: 20px;
+    border-bottom: 1px solid  #180026;
+}
+
+.vet-card p {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: var(--dark-blue);
+}
+
+.vet-card p  .icon{
+    color: var(--dark-purple);
+}

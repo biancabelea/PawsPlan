@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AddMedication from "./components/AddMedication";
 import MyPets from "./components/MyPets";
 import EditPet from "./components/EditPet";
+import Vets from "./components/Vets";
 
 const App = () => {
 
@@ -38,6 +39,7 @@ const App = () => {
                         <Route path="/add-pet" element={<AddPet userId={userId}/>} />
                         <Route path="/add-medication" element={<AddMedication/>} />
                         <Route path="/edit-pet" element={<EditPet/>} />
+                        <Route path="/vets" element={<Vets/>} />
                     </Routes>
                 </Router>
             </div>
