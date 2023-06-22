@@ -1,44 +1,65 @@
-import React, { useRef, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { firestore } from './firebaseConfig';
+import { collection, getDocs } from 'firebase/firestore';
+import './styles/EmailButton.css';
 import emailjs from 'emailjs-com';
 
 const EmailContactForm = () => {
-	const form = useRef();
-	const [to_name, setTo_name] = useState('');
+	const userId = sessionStorage.getItem('userId');
 
-	const sendEmail = (e) => {
-		e.preventDefault();
+	const [users, setUsers] = useState([]);
 
-		emailjs.sendForm('service_jtb5i97', 'template_r58detq', form.current, 'n57BsnxNIWol_iHXz')
-			.then((result) => {
-				console.log('merge ba');
-				console.log(result);
-			})
-			.catch((error) => {
-				console.error('aia e', error);
+	useEffect(() => {
+		getUsers();
+	}, []);
+
+	const getUsers = async () => {
+		try {
+			const usersQuery = collection(firestore, 'users');
+			const usersSnapshot = await getDocs(usersQuery);
+			const usersData = usersSnapshot.docs.map((doc) => {
+				const data = doc.data();
+				return {
+					ownerName: data.ownerName,
+					email: data.email,
+				};
 			});
-			e.target.reset();
+			setUsers(usersData);
+		} catch (error) {
+			console.error('Eroare la afisarea utilizatorilor', error);
+		}
 	};
 
-	const handleNameChange = (e) => {
-		setTo_name(e.target.value);
+	const sendEmail = () => {
+		users.forEach((user) => {
+			const templateParams = {
+				to_name: user.ownerName,
+				to_email: user.email,
+			};
+
+			emailjs
+				.send(
+					'service_jtb5i97',
+					'template_r58detq',
+					templateParams,
+					'n57BsnxNIWol_iHXz'
+				)
+				.then((result) => {
+					console.log('Email sent successfully to', user.user_email);
+				})
+				.catch((error) => {
+					console.error('Failed to send email to', user.user_email, error);
+				});
+		});
 	};
 
-	return (
-		<form ref={form} onSubmit={sendEmail}>
-			<label>Name</label>
-			<input
-				type="text"
-				name="to_name"
-				value={to_name}
-				onChange={handleNameChange}
-			/>
-			<label>Email</label>
-			<input type="email" name="user_email" />
-			<label>Message</label>
-			<textarea name="message" />
-			<input type="submit" value="Send" />
-		</form>
-	);
+	if (userId === 'IwCltxILHkQZlO2HdR1od6Aej6t2') {
+		return (
+			<div>
+				<button onClick={sendEmail} className="send-button">Trimite emailuri</button>
+			</div>
+		);
+	}
 };
 
 export default EmailContactForm;
