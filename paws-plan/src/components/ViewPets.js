@@ -28,6 +28,9 @@ const ViewPets = () => {
 					};
 				});
 				setPets(petsData);
+				if (petsData.length > 0) {
+					setSelectedPet(petsData[0]);
+				}
 			} catch (error) {
 				console.error("Eroare la afișarea animalelor.", error);
 			}

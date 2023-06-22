@@ -64,10 +64,10 @@ const MedForPet = ({selectedPet, medications}) => {
 			</div>
 			<div className="med-pets">
 				{medications.map((medication) => (
-					<div key={medication.medId}>
-						<p>Nume medicație: {medication.medName}</p>
-						<p>Dozaj: {medication.dosage}</p>
-						<p>Timestamp: {medication.timestamp && medication.timestamp.toString()}</p>
+					<div key={medication.medId} className="med-card">
+						<p><strong>Nume:</strong> {medication.medName}</p>
+						<p><strong>Dozaj:</strong> {medication.dosage}</p>
+						<p><strong>Administrare:</strong> {medication.timestamp && medication.timestamp.toString()}</p>
 						<button className="deletemed" onClick={() => handleDeleteMedication(medication.medId)}><FontAwesomeIcon className="icon" icon={faTrash}/></button>
 					</div>
 				))}

@@ -3,6 +3,7 @@ import { firestore } from "../firebaseConfig";
 import { doc, updateDoc } from 'firebase/firestore';
 import {useLocation, useNavigate} from "react-router-dom";
 import Swal from 'sweetalert2';
+import '../styles/EditPet.css';
 
 
 const EditPet = () => {
@@ -28,8 +29,8 @@ const EditPet = () => {
 				text: 'Ești sigur că vrei să actualizezi animalul?',
 				icon: 'warning',
 				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				cancelButtonColor: '#d33',
+				confirmButtonColor: '#180026FF',
+				cancelButtonColor: '#8B0000FF',
 				confirmButtonText: 'Da',
 				cancelButtonText: 'Anulează'
 			});
@@ -51,34 +52,37 @@ const EditPet = () => {
 
 
 	return (
-		<div>
-			<form onSubmit={handleUpdate}>
-				<h1>Editează animal</h1>
-				<div>
-					<label>Numele animalului: </label>
+		<div className="content-editpet">
+			<h1>Editează animal</h1>
+			<form className="editpet-form" onSubmit={handleUpdate}>
+				<div className="editpet-label">
+					<p>Numele animalului: </p>
 					<input
 						type="text"
+						className="editpet-input"
 						value={editedPetName}
 						onChange={(e) => setEditedPetName(e.target.value)}
 					/>
 				</div>
-				<div>
-					<label>Vârsta animalului: </label>
+				<div className="editpet-label">
+					<p>Vârsta animalului: </p>
 					<input
 						type="number"
+						className="editpet-input"
 						value={editedAge}
 						onChange={(e) => setEditedAge(e.target.value)}
 					/>
 				</div>
-				<div>
-					<label>Rasa animalului: </label>
+				<div className="editpet-label">
+					<p>Rasa animalului: </p>
 					<input
 						type="text"
+						className="editpet-input"
 						value={editedBreed}
 						onChange={(e) => setEditedBreed(e.target.value)}
 					/>
 				</div>
-				<button type="submit">Salvează</button>
+				<button className="editpet-button" type="submit">Salvează</button>
 			</form>
 		</div>
 	);
