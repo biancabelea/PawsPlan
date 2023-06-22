@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { auth } from "./firebaseConfig";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AddPet from "./components/AddPet";
 import Register from "./components/authentication/Register";
 import Login from "./components/authentication/Login";
 import Homepage from "./components/Homepage";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AddMedication from "./components/AddMedication";
 import MyPets from "./components/MyPets";
 import EditPet from "./components/EditPet";
 import Vets from "./components/Vets";
+import { auth } from "./firebaseConfig";
 
 const App = () => {
-
     const [userId, setUserId] = useState(null);
     const [loggedIn, setLoggedIn] = useState(false);
 

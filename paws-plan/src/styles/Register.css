@@ -9,6 +9,7 @@
     padding: 0;
     font-family: Roboto;
 }
+
 body {
     height: 100vh;
     background-color: var(--baby-blue);
@@ -32,6 +33,7 @@ body {
     height: 320px;
     z-index: 1;
 }
+
 .register-container .cat-photo {
     position: absolute;
     top: 79%;
@@ -39,6 +41,7 @@ body {
     height: 130px;
     z-index: 1;
 }
+
 .register-content {
     height: 600px;
     display: flex;
@@ -46,17 +49,20 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
 .register-content h2 {
     margin: 30px;
     font-size: 35px;
     color: var(--baby-blue-darker);
 }
+
 .register-form {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
+
 .register-input {
     width: 250px;
     height: 30px;
@@ -67,6 +73,7 @@ body {
     position: relative;
     z-index: 2;
 }
+
 .register-button {
     width: 200px;
     height: 40px;
@@ -89,4 +96,3 @@ body {
     margin: 15px 0;
     font-size: 20px;
 }
-

@@ -1,9 +1,9 @@
-import React, { useState, useEffect} from 'react';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaw } from "@fortawesome/free-solid-svg-icons";
+import React, { useState, useEffect } from 'react';
 import { collection, getDocs, query } from "firebase/firestore";
 import { firestore } from "../firebaseConfig";
 import "../styles/ViewPet.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaw } from "@fortawesome/free-solid-svg-icons";
 
 const PetNames = ({ onSelectPet }) => {
 	const userId = sessionStorage.getItem('userId');

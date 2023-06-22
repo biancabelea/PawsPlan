@@ -15,4 +15,4 @@ const MyPets = () => {
 	)
 }
 
-export default MyPets
+export default MyPets;

@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebaseConfig';
 import firebase from "firebase/compat/app";
 import '../../styles/Register.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { faLock } from '@fortawesome/free-solid-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import {ReactComponent as MedicPic} from "../../pictures/undraw_medical.svg";
-import {ReactComponent as CatPic} from "../../pictures/undraw_cat.svg";
-import { useNavigate } from 'react-router-dom';
+import { faUser, faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { ReactComponent as MedicPic } from "../../pictures/undraw_medical.svg";
+import { ReactComponent as CatPic } from "../../pictures/undraw_cat.svg";
 
 const Register = () => {
+	const navigate = useNavigate();
+
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [registeredEmail, setRegisteredEmail] = useState('');
-
-	const navigate = useNavigate();
 
 	const handleRegister = async (e) => {
 		e.preventDefault();
@@ -31,11 +29,11 @@ const Register = () => {
 				email: user.email
 			};
 			await userRef.set(userData);
-			console.log('Registered successfully!', user.email);
 
 			setRegisteredEmail(email);
 			setEmail('');
 			setPassword('');
+
 			navigate('/login');
 		} catch (error) {
 			console.error('Error registering:', error);

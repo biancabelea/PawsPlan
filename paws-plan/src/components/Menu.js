@@ -1,11 +1,9 @@
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBone } from '@fortawesome/free-solid-svg-icons';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { faUserDoctor } from '@fortawesome/free-solid-svg-icons';
-import "../styles/Menu.css";
 import Logout from "./authentication/Logout";
-import {ReactComponent as Logo} from "../pictures/logo.svg"
+import "../styles/Menu.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBone, faPlus, faUserDoctor } from '@fortawesome/free-solid-svg-icons';
+import { ReactComponent as Logo } from "../pictures/logo.svg";
 
 const Menu = () => {
 	const ownerName = sessionStorage.getItem('ownerName');

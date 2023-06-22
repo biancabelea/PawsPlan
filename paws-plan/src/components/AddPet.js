@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
+import Menu from "./Menu";
+import { useNavigate } from "react-router-dom";
 import { firestore } from "../firebaseConfig";
 import { collection, addDoc, doc } from 'firebase/firestore';
-import Menu from "./Menu";
 import "../styles/Menu.css";
 import "../styles/AddPet.css";
 import Swal from 'sweetalert2';
-import {useNavigate} from "react-router-dom";
 
 const AddPet = ({userId}) => {
+	const navigate = useNavigate();
+
 	const [petName, setPetName] = useState('');
 	const [age, setAge] = useState(0);
 	const [breed, setBreed] = useState('');
-
-	const navigate = useNavigate();
 
 	const handleAddPet = async (e) => {
 		e.preventDefault();
@@ -47,7 +47,7 @@ const AddPet = ({userId}) => {
 			setPetName('');
 			setAge(0);
 			setBreed('');
-			console.log('Animalul a fost adăugat cu succes!');
+
 			navigate('/');
 		} catch (error) {
 			console.error('Eroare la adaugarea animalului:', error);

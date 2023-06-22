@@ -1,7 +1,7 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import { auth } from '../../firebaseConfig';
 import "../../styles/Logout.css";
-import {useNavigate} from "react-router-dom";
 
 const Logout = () => {
 	const userId = sessionStorage.getItem('userId');
@@ -11,7 +11,6 @@ const Logout = () => {
 	const handleLogout = async () => {
 		try {
 			await auth.signOut();
-			console.log('Log out cu succes!');
 			sessionStorage.clear();
 			navigate('/');
 		} catch (error) {

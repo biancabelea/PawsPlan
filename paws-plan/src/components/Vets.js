@@ -1,12 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import {collection, getDocs, query} from "firebase/firestore";
-import {firestore} from "../firebaseConfig";
+import React, { useState, useEffect } from 'react';
 import Menu from "./Menu";
+import { collection, getDocs, query } from "firebase/firestore";
+import { firestore } from "../firebaseConfig";
 import "../styles/Vets.css";
-import {faBone, faPhone} from '@fortawesome/free-solid-svg-icons';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone, faLocationDot, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const Vets = () => {
 	const [vets, setVets] = useState([]);

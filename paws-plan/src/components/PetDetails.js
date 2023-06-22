@@ -1,15 +1,16 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
+import { deleteDoc, doc } from "firebase/firestore";
+import { firestore } from "../firebaseConfig";
+import "../styles/ViewPet.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays, faHeart } from "@fortawesome/free-solid-svg-icons";
-import "../styles/ViewPet.css";
-import {deleteDoc, doc} from "firebase/firestore";
-import {firestore} from "../firebaseConfig";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import {useNavigate} from "react-router-dom";
 
 const PetDetails = ({selectedPet}) => {
 	const userId = sessionStorage.getItem('userId');
+
 	const navigate = useNavigate();
 
 	const handleDelete = () => {
@@ -35,7 +36,6 @@ const PetDetails = ({selectedPet}) => {
 			const petDocRef = doc(firestore, 'users', userId, 'pets', selectedPet.petId);
 			await deleteDoc(petDocRef);
 			window.location.reload();
-			console.log('Animalul a fost șters cu succes!');
 		} catch (error) {
 			console.error('Eroare la ștergerea animalului.', error);
 		}
@@ -50,7 +50,6 @@ const PetDetails = ({selectedPet}) => {
 			}
 		});
 	}
-
 
 	if (!selectedPet) {
 		return <p>Apasă pe numele unui animal pentru detalii.</p>;
@@ -69,7 +68,6 @@ const PetDetails = ({selectedPet}) => {
 					<button onClick={handleDelete}>Delete</button>
 				</div>
 			</div>
-
 		</div>
 	)
 }

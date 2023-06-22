@@ -1,10 +1,10 @@
-import React, { useState, useEffect} from 'react';
-import { firestore } from "../firebaseConfig";
-import { collection, query, getDocs } from 'firebase/firestore';
-import "../styles/ViewPet.css";
+import React, { useState, useEffect } from 'react';
 import PetNames from "./PetNames";
 import MedForPet from "./MedForPet";
 import PetDetails from "./PetDetails";
+import { firestore } from "../firebaseConfig";
+import { collection, query, getDocs } from 'firebase/firestore';
+import "../styles/ViewPet.css";
 
 const ViewPets = () => {
 	const userId = sessionStorage.getItem('userId');
@@ -54,14 +54,12 @@ const ViewPets = () => {
 							timestamp: data.timestamp,
 						};
 					});
-					console.log('Medications:', medicationsData);
 					setMedications(medicationsData);
 				}
 			} catch (error) {
 				console.error('Eroare la afișarea medicatiilor!', error);
 			}
 		};
-
 		fetchMedications();
 	}, [userId, selectedPet]);
 

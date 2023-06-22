@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { useNavigate, useLocation } from "react-router-dom";
 import { collection, addDoc } from 'firebase/firestore';
 import { firestore } from '../firebaseConfig';
-import { useNavigate, useLocation } from "react-router-dom";
-import Swal from 'sweetalert2';
 import '../styles/AddMed.css';
+import Swal from 'sweetalert2';
 
 const AddMedication = () => {
 	const userId = sessionStorage.getItem('userId');
@@ -44,15 +44,13 @@ const AddMedication = () => {
 				timestamp: timestamp
 			};
 
-			console.log(medication);
-
 			const petRef = collection(firestore, 'users', userId, 'pets', petId, 'medication');
 			await addDoc(petRef, medication);
 
 			setMedName('');
 			setDosage('');
 			setTimestamp('');
-			console.log('Medication added successfully!');
+
 			navigate('/');
 		} catch (error) {
 			console.error('Error adding medication:', error);
@@ -93,7 +91,6 @@ const AddMedication = () => {
 						onChange={(e) => setTimestamp(e.target.value)}
 					/>
 				</div>
-
 				<button className="addmed-button" onClick={handleAddMedication}>ADAUGĂ</button>
 			</div>
 		</div>

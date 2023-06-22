@@ -3,21 +3,19 @@
     --bright-blue: #6de0ff;
 }
 
-.content-vets{
+.content-vets {
     justify-items: center;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-
     height: 100%;
     width: 100%;
 }
 
-.vet-card{
+.vet-card {
     display: flex;
     align-items:start;
     flex-direction: column;
     justify-content: center;
-
     height: 200px;
     width: 300px;
     border-radius: 5px;
@@ -26,7 +24,7 @@
     color: white;
 }
 
-.vet-card h1{
+.vet-card h1 {
     color: var(--dark-purple);
     margin-bottom: 20px;
     border-bottom: 1px solid  #180026;
@@ -38,6 +36,6 @@
     color: var(--dark-blue);
 }
 
-.vet-card p  .icon{
+.vet-card p .icon{
     color: var(--dark-purple);
 }

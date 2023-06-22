@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
+import { useLocation, useNavigate } from "react-router-dom";
 import { firestore } from "../firebaseConfig";
 import { doc, updateDoc } from 'firebase/firestore';
-import {useLocation, useNavigate} from "react-router-dom";
-import Swal from 'sweetalert2';
 import '../styles/EditPet.css';
-
+import Swal from 'sweetalert2';
 
 const EditPet = () => {
 	const userId = sessionStorage.getItem('userId');
 
+	const navigate = useNavigate();
+
 	const location = useLocation();
 	const { petName, age, breed } = location.state;
 	const searchParams = new URLSearchParams(location.search);
-
 	const petId = searchParams.get('petId');
-
-	const navigate = useNavigate();
 
 	const [editedPetName, setEditedPetName] = useState(petName);
 	const [editedAge, setEditedAge] = useState(age);
@@ -42,14 +40,13 @@ const EditPet = () => {
 					age: editedAge,
 					breed: editedBreed
 				});
-				console.log("Animalul a fost actualizat cu succes!");
+
 				navigate('/my-pets');
 			}
 		} catch (error) {
 			console.error("Eroare la actualizarea animalului.", error);
 		}
 	};
-
 
 	return (
 		<div className="content-editpet">

@@ -1,21 +1,19 @@
 import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import { auth, firestore } from '../../firebaseConfig';
 import '../../styles/Login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLock } from '@fortawesome/free-solid-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import {ReactComponent as DoctorPic} from "../../pictures/undraw_doctors.svg"
-import {ReactComponent as DogPic} from "../../pictures/undraw_dog.svg";
-import { useNavigate } from 'react-router-dom';
-
+import { faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { ReactComponent as DoctorPic } from "../../pictures/undraw_doctors.svg"
+import { ReactComponent as DogPic } from "../../pictures/undraw_dog.svg";
 
 const Login = () => {
+	const navigate = useNavigate();
+
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [loggedEmail, setLoggedEmail] = useState('');
 	const [loggedIn, setLoggedIn] = useState(false);
-
-	const navigate = useNavigate();
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
@@ -29,7 +27,6 @@ const Login = () => {
 				const userData = userDoc.data();
 				const ownerName = userData.ownerName;
 
-				console.log('Log in cu succes!');
 				setLoggedEmail(email);
 				setEmail('');
 				setPassword('');

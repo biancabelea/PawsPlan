@@ -12,6 +12,7 @@ a {
     padding: 20px 0px;
     font-size: 20px;
 }
+
 .menu {
     width: 15%;
     height: 100vh;
@@ -47,7 +48,7 @@ a {
     bottom: 26%;
 }
 
-.content{
+.content {
     height: 700px;
     width:100%;
     background-color: #a6bedb;

@@ -1,11 +1,10 @@
 import React from "react";
+import MyPets from "./MyPets";
 import { useNavigate } from 'react-router-dom';
 import "../styles/Homepage.css";
 import {ReactComponent as Logo} from "../pictures/logo.svg";
-import MyPets from "./MyPets";
 
 const Homepage = () => {
-
 	const userId = sessionStorage.getItem('userId');
 
 	const navigate = useNavigate();
