@@ -74,7 +74,7 @@ const AddMedication = () => {
 				<div className="addmed-label">
 					<p>Dosage:</p>
 					<input
-						type="text"
+						type="number"
 						className="addmed-input"
 						id="doza"
 						value={dosage}

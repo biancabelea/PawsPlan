@@ -36,7 +36,7 @@ const Register = () => {
 
 			navigate('/login');
 		} catch (error) {
-			console.error('Error registering:', error);
+			console.error('Eroare la înregistrarea utilizatorului:', error);
 		}
 	};
 

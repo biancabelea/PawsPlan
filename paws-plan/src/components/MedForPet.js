@@ -65,7 +65,10 @@ const MedForPet = ({selectedPet, medications}) => {
 						<p><strong>Nume:</strong> {medication.medName}</p>
 						<p><strong>Dozaj:</strong> {medication.dosage}</p>
 						<p><strong>Administrare:</strong> {medication.timestamp && medication.timestamp.toString()}</p>
-						<button className="deletemed" onClick={() => handleDeleteMedication(medication.medId)}><FontAwesomeIcon className="icon" icon={faTrash}/></button>
+						<button className="deletemed" onClick={
+							() => handleDeleteMedication(medication.medId)}>
+							<FontAwesomeIcon className="icon" icon={faTrash}/>
+						</button>
 					</div>
 				))}
 			</div>
