@@ -4,7 +4,7 @@ import { collection, getDocs, query } from "firebase/firestore";
 import { firestore } from "../firebaseConfig";
 import "../styles/Vets.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhone, faLocationDot, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faPhone, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 const Vets = () => {
 	const [vets, setVets] = useState([]);
@@ -21,7 +21,6 @@ const Vets = () => {
 						cabinet: data.cabinet,
 						adresa: data.adresa,
 						telefon: data.telefon,
-						email: data.email
 					};
 				});
 				setVets(vetsData);
