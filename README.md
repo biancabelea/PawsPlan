@@ -1,4 +1,4 @@
-# PawsPlan
+# PawsPlan - APLICAȚIE DE MONITORIZARE A TRATAMENTELOR ANIMALELOR DE COMPANIE
 ## Pași prealabili descărcării proiectului
 1. Descărcarea și instalarea Git, de la adresa `https://git-scm.com/download/win`
 2. Descărcarea și instalarea Node.js și npm (Node Package Manager), de la adresa: `https://nodejs.org/en/download`
