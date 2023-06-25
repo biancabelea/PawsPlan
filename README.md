@@ -13,5 +13,8 @@ Se clonează proiectul, în terminal cu comanda `git clone https://github.com/bi
 3. Instalarea dependințelor, cu comanda `npm install`
 4. Pornirea aplicației local, cu comanda `npm start`
 
-## Accesarea aplicației
+## Accesarea locală a aplicației
 Odată ce comanda anterioară este efectuată cu succes, se poate accesa în browser adresa `http://localhost:3000` sau cea specificată în terminal.
+
+## Accesarea online a aplicației
+Aplicația este disponibilă online, la adresa: `https://pawsplan-f6073.web.app`
